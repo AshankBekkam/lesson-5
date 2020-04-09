@@ -10,9 +10,9 @@ const Previewcollection = ({title,items})=>(
         {
             items
             .filter((item,index)=>index<4)
-            .map(({id,...otherItemProps})=>
+            .map((item)=>
             (
-                <Collectionitem key = {id} {...otherItemProps}/>
+                <Collectionitem key = {item.id} item={item}/>
 
             ))
         }
