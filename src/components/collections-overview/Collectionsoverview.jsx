@@ -1,21 +1,29 @@
 import React from "react";
-import {selectShopSections} from '../../redux/shop/shop.selector'
+import {selectShopSections,selectCollectionsForPreview} from '../../redux/shop/shop.selector'
 import { connect } from "react-redux";
 import Previewcollection from "../preview-collection/Previewcollection";
 
 import "./Collectionsoverview.scss";
 
-const Collectionsoverview = ({ sections }) => (
+const Collectionsoverview = ({ sections }) => {
+
+  console.log(sections)
+  
+  
+  return(
   <div className="collections-overview">
-    {sections.map(({ id, ...otherCollectionProps }) => (
-      <Previewcollection key={id} {...otherCollectionProps} />
-    ))}
+  {
+    sections.map(({ id, ...otherCollectionProps }) => (
+    <Previewcollection key={id} {...otherCollectionProps} />
+  ))
+}
+   
   </div>
-);
+)};
 
 
 const mapStateToProps = (state)=>({
-    sections:selectShopSections(state)
+    sections:selectCollectionsForPreview(state)
 })
 
 export default connect(mapStateToProps)(Collectionsoverview)
